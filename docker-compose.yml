@@ -1,0 +1,20 @@
+version: '2'
+services:
+### ElasticSearch Container #################################
+
+    elasticsearch:
+      build: ./docker/elasticsearch
+      volumes:
+        - elasticsearch-data:/usr/share/elasticsearch/data
+        - elasticsearch-plugins:/usr/share/elasticsearch/plugins
+      ports:
+        - "9200:9200"
+        - "9300:9300"
+
+    ### Volumes Setup #############################################
+
+volumes:
+  elasticsearch-data:
+    driver: "local"
+  elasticsearch-plugins:
+    driver: "local"
